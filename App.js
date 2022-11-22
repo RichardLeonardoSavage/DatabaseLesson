@@ -32,17 +32,56 @@ const App = () => {
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <SafeAreaView>
+        <ScrollView>
+          <View>
+            <Text style={styles.sectionTitle}>Simple Calculator</Text>
+            <View style={styles.calcBox}>
+              <Text style={styles.outputText}>
+                {calculation || 'Enter a number'}
+              </Text>
+            </View>
+            <CalcButtons updateCalculation={updateCalculation}/>
+            <NumberButtons updateCalculation={updateCalculation}/>
+            <DbButtons sqlOperation={sqlOperation}/>
+          </View>
+        </ScrollView>
+        <FlatList
+        data={DbDisplay}
+        renderItem={({item}) => <Text style={styles.item}>{item.value}</Text>}
+        />
+      </SafeAreaView>
     </View>
   );
 }
 
+
+
+//style 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  fontSize: 40,
+  flex: 1,
   },
-});
+  calcBox: {
+  height: 50,
+  borderRadius: 40,
+  paddingLeft: 20,
+  paddingTop: 10,
+  backgroundColor: 'oldlace',
+  marginBottom: 10,
+  borderWidth: 1,
+  },
+  outputText: {
+  fontWeight: 'bold',
+  textAlignVertical: 'center',
+  textAlignment: 'right',
+  fontSize: 30,
+  },
+  sectionTitle: {
+  color: 'white',
+  fontSize: 24,
+  fontWeight: 'bold',
+  textAlignVertical: 'center',
+  },
+ });
