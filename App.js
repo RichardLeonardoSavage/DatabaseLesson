@@ -4,7 +4,7 @@ from 'react-native';
 import {React, useState} from 'react';
 import {CalcButtons} from './Components/calcbuttons';
 import {NumberButtons} from './Components/NumberButtons';
-import {DbButtons} from './Components/DbButtons';
+
 
 const App = () => {
   const [calculation, setCalculation] = useState('');
@@ -26,12 +26,16 @@ const App = () => {
       setCalculation(result);
     }
     };
-  
 
 
-export default function App() {
+
   return (
-    <View style={styles.container}>
+    <ImageBackground
+    resizeMode="cover"
+    source={require('./assets/backdrop.jpg')}
+    style={styles.image}>
+
+<View style={styles.container}>
       <SafeAreaView>
         <ScrollView>
           <View>
@@ -52,13 +56,23 @@ export default function App() {
         />
       </SafeAreaView>
     </View>
+    </ImageBackground>
   );
-}
 
+
+
+  };
+    
 
 
 //style 
 const styles = StyleSheet.create({
+  image:{
+    flex: 1,
+    justifyContent: 'center',
+    width: '100',
+    height: '100',
+  },
   container: {
   fontSize: 40,
   flex: 1,
@@ -84,4 +98,5 @@ const styles = StyleSheet.create({
   fontWeight: 'bold',
   textAlignVertical: 'center',
   },
+
  });
